@@ -1,6 +1,6 @@
 package
 {
-    import org.flixel.*;
+    import org.flixel.FlxGame;
     import com.jjin.PlayState;
     
     [SWF(width="640", height="480", backgroundColor="#000000")]

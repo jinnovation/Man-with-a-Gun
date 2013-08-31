@@ -8,8 +8,8 @@ package com.jjin
 	protected var mIdleAnimation:Array;
 
 	protected var mRunSpeed:int;
-	protected var mGravity:int;
 	protected var mJumpSpeed:int;
+	protected var mGravity:int;
 
 	protected function isIdle():Boolean {
 	    return (!velocity.x && !velocity.y) ? true : false;

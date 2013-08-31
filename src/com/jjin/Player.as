@@ -11,10 +11,6 @@ package com.jjin
     {
 	[Embed(source="../../../asset/sprite/helmetguy.png")]public var helmetGuy:Class;
 	[Embed(source="../../../asset/sprite/helmetguy_gibs.png")]public var iGibs:Class;
-	
-	// protected static const RUN_SPEED:int = 150;
-	// protected static const GRAVITY:int = 450;
-	// protected static const JUMP_SPEED:int = 200;
 
 	protected var mGibs:FlxEmitter;
 
@@ -28,10 +24,13 @@ package com.jjin
 	    mRunSpeed = 150;
 	    mGravity = 450;
 	    mJumpSpeed = 200;
+
+	    mMovingAnimation = new Array(1,2);
+	    mIdleAnimation = new Array(0);
 	    
 	    loadGraphic(helmetGuy, true, true);
-	    addAnimation("walking", [1,2], 12, true);
-	    addAnimation("idle", [0]);
+	    addAnimation("walking", mMovingAnimation, 12, true);
+	    addAnimation("idle", mIdleAnimation);
 
 	    drag.x = mRunSpeed * 8;
 	    acceleration.y = mGravity;

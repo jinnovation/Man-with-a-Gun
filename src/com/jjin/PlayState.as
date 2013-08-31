@@ -1,7 +1,9 @@
 package com.jjin
 {
     import org.flixel.*;
-    import com.jjin.*;
+
+    import com.jjin.Player;
+    import com.jjin.Enemy;
 
     public class PlayState extends FlxState
     {
@@ -11,6 +13,8 @@ package com.jjin
 	[Embed(source="../../../asset/map/mapCSV_Group1_Map1bg1.csv", mimeType="application/octet-stream")]public var mapBg1:Class;
 
 	[Embed(source="../../../asset/tile/forest.png")]public var tilesLevel:Class;
+
+	[Embed(source="../../../asset/sound/music/8-bit_Freeride.mp3")]private var mMusic:Class;
 
 	public var mPlayer:Player;
 
@@ -31,6 +35,7 @@ package com.jjin
 
 	override public function create():void
 	{
+	    FlxG.playMusic(mMusic);
 	    super.create();
 
 	    FlxG.bgColor = 0xffaaaaaa;
