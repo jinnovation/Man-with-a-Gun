@@ -37,7 +37,7 @@ package com.jjin
 	{
 	    super.create();
 	    
-	    FlxG.playMusic(mMusic);
+	    FlxG.playMusic(mMusic, 0.5);
 	    FlxG.bgColor = 0xffaaaaaa;
 
 	    // MAP SETUP
@@ -77,8 +77,6 @@ package com.jjin
 	}
 
 	protected function overlapped(sprite1:FlxSprite, sprite2:FlxSprite):void {
-	    
-	    if (sprite1 == mPlayer) FlxG.play(mPlayer.sDie);
 	    sprite1.kill();
 	}
     }
