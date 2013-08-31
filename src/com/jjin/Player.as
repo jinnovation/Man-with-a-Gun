@@ -9,7 +9,7 @@ package com.jjin
 
     public class Player extends Character
     {
-	[Embed(source="../../../asset/sprite/helmetguy.png")]public var helmetGuy:Class;
+	[Embed(source="../../../asset/sprite/helmetguy.png")]public var iHelmetGuy:Class;
 	[Embed(source="../../../asset/sprite/helmetguy_gibs.png")]public var iGibs:Class;
 
 	[Embed(source="../../../asset/sound/fx/playerJump.mp3")]public var sJump:Class;
@@ -31,7 +31,7 @@ package com.jjin
 	    mMovingAnimation = new Array(1,2);
 	    mIdleAnimation = new Array(0);
 	    
-	    loadGraphic(helmetGuy, true, true);
+	    loadGraphic(iHelmetGuy, true, true);
 	    addAnimation("walking", mMovingAnimation, 12, true);
 	    addAnimation("idle", mIdleAnimation);
 
