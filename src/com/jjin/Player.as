@@ -80,6 +80,7 @@ package com.jjin
 
 	    FlxG.camera.shake(0.005, 0.35);
 	    FlxG.camera.flash(0xffDB3624, 0.35);
+	    FlxG.play(sDie);
 
 	    if (mGibs != null) {
 		mGibs.at(this);
