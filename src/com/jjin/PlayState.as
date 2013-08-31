@@ -14,7 +14,7 @@ package com.jjin
 
 	[Embed(source="../../../asset/tile/forest.png")]public var tilesLevel:Class;
 
-	[Embed(source="../../../asset/sound/music/8-bit_Freeride.mp3")]private var mMusic:Class;
+	[Embed(source="../../../asset/sound/music/8-bit_Freeride.mp3")]public var mMusic:Class;
 
 	public var mPlayer:Player;
 
@@ -35,9 +35,9 @@ package com.jjin
 
 	override public function create():void
 	{
-	    FlxG.playMusic(mMusic);
 	    super.create();
-
+	    
+	    FlxG.playMusic(mMusic);
 	    FlxG.bgColor = 0xffaaaaaa;
 
 	    // MAP SETUP
@@ -77,6 +77,8 @@ package com.jjin
 	}
 
 	protected function overlapped(sprite1:FlxSprite, sprite2:FlxSprite):void {
+	    
+	    if (sprite1 == mPlayer) FlxG.play(mPlayer.sDie);
 	    sprite1.kill();
 	}
     }

@@ -2,7 +2,7 @@
 <project>
   <version>3.1.3</version>
   <bgColor>0x777777</bgColor>
-  <viewPos x="160" y="18"/>
+  <viewPos x="64" y="18"/>
   <firstLayersTop>false</firstLayersTop>
   <spriteEntries currentId="1"/>
   <layers>

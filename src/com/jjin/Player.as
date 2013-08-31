@@ -12,6 +12,9 @@ package com.jjin
 	[Embed(source="../../../asset/sprite/helmetguy.png")]public var helmetGuy:Class;
 	[Embed(source="../../../asset/sprite/helmetguy_gibs.png")]public var iGibs:Class;
 
+	[Embed(source="../../../asset/sound/fx/playerJump.mp3")]public var sJump:Class;
+	[Embed(source="../../../asset/sound/fx/playerDie.mp3")]public var sDie:Class;
+
 	protected var mGibs:FlxEmitter;
 
 	public function getGibs():FlxEmitter {
@@ -56,9 +59,11 @@ package com.jjin
 	    }
 
 	    if ((FlxG.keys.justPressed("UP") || FlxG.keys.justPressed("SPACE"))
-		&& !velocity.y)
+		&& !velocity.y) {
+		FlxG.play(sJump);
 	        velocity.y = -mJumpSpeed;
-
+	    }
+	    
 	    if (velocity.x != 0) {
 		play("walking");
 	    } else if (!velocity.x) {

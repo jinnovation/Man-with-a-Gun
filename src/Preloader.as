@@ -5,7 +5,7 @@ package
     public class Preloader extends FlxPreloader
     {
 	public function Preloader() {
-	    className = "EZPlatformer2";
+	    className = "FlixelPracticePlatformer";
 	    super();
 	}
     }
