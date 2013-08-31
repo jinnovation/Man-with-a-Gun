@@ -11,6 +11,7 @@ package com.jjin
     {
 	[Embed(source="../../../asset/sprite/helmetguy.png")]public var iHelmetGuy:Class;
 	[Embed(source="../../../asset/sprite/helmetguy_gibs.png")]public var iGibs:Class;
+	[Embed(source="../../../asset/sprite/helmetguy_bullet.png")]public var iBullet:Class;
 
 	[Embed(source="../../../asset/sound/fx/playerJump.mp3")]public var sJump:Class;
 	[Embed(source="../../../asset/sound/fx/playerDie.mp3")]public var sDie:Class;
