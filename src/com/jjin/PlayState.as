@@ -27,14 +27,15 @@ package com.jjin
 	public var mProps:FlxTilemap = new FlxTilemap;
 
 	private var mCollideables:FlxGroup = new FlxGroup;
+	private var mBullets:FlxGroup = new FlxGroup;
 
 	private var mTileDim:int = 16;
+	private var mBulletLimit:int = 4;
 
 	private var mStartLocation_player:FlxPoint = new FlxPoint(10,10);
 	private var mStartLocation_enemy:FlxPoint = new FlxPoint(200,20);
 
-	override public function create():void
-	{
+	override public function create():void {
 	    super.create();
 	    
 	    FlxG.playMusic(mMusic, 0.5);
@@ -47,14 +48,19 @@ package com.jjin
 	    add(mMap.loadMap(new mapLevel, tilesLevel, mTileDim, mTileDim));
 
 	    mCollideables.add(mMap);
+
+	    var i:int;
+	    for (i=0 ; i<mBulletLimit ; i++)
+	    mBullets.add(new Bullet());
 	    
 	    mBgLayer.setParallax(new FlxPoint(0.5,0.5));
 	    mBgLayer1.setParallax(new FlxPoint(0.25,0.25));
 
 	    // SPRITES SETUP
-	    mPlayer = new Player(mStartLocation_player.x, mStartLocation_player.y);
-	    mEnemies.add(new Enemy(mStartLocation_enemy.x, mStartLocation_enemy.y,
-		    mPlayer));
+	    mPlayer = new Player(mStartLocation_player.x,
+		mStartLocation_player.y);
+	    mEnemies.add(new Enemy(mStartLocation_enemy.x,
+		    mStartLocation_enemy.y, mPlayer));
 	    mEnemies.add(new Enemy(200,40,mPlayer));
 
 	    // CAMERA SETUP
@@ -66,6 +72,7 @@ package com.jjin
 	    add(mPlayer);
 	    add(mEnemies);
 	    add(mPlayer.getGibs());
+	    add(mBullets);
 	}
 
 	override public function update():void
