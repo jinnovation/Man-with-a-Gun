@@ -1,6 +1,7 @@
-Jonathan Jin's Flixel Practice Platformer
+Man with a Gun
 =========================================
-Experimenting with game development with **Flixel** and **AS3**.
+* Clone of Megaman
+* Experimenting with game development with **Flixel** and **AS3**.
 
 How to acquire the game file
 ----------------------------
