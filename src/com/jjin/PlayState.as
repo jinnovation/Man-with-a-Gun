@@ -17,6 +17,7 @@ package com.jjin
 	[Embed(source="../../../asset/sound/music/8-bit_Freeride.mp3")]public var mMusic:Class;
 
 	public var mPlayer:Player;
+	private var mPlayerBullets:FlxGroup;
 
 	public var mEnemy:Enemy;
 	public var mEnemies:FlxGroup = new FlxGroup;
@@ -27,17 +28,17 @@ package com.jjin
 	public var mProps:FlxTilemap = new FlxTilemap;
 
 	private var mCollideables:FlxGroup = new FlxGroup;
-	private var mBullets:FlxGroup = new FlxGroup;
 
 	private var mTileDim:int = 16;
-	private var mBulletLimit:int = 4;
 
 	private var mStartLocation_player:FlxPoint = new FlxPoint(10,10);
 	private var mStartLocation_enemy:FlxPoint = new FlxPoint(200,20);
 
 	override public function create():void {
 	    super.create();
-	    
+
+	    FlxG.visualDebug = true;
+
 	    FlxG.playMusic(mMusic, 0.5);
 	    FlxG.bgColor = 0xffaaaaaa;
 
@@ -49,10 +50,6 @@ package com.jjin
 
 	    mCollideables.add(mMap);
 
-	    var i:int;
-	    for (i=0 ; i<mBulletLimit ; i++)
-	    mBullets.add(new Bullet());
-	    
 	    mBgLayer.setParallax(new FlxPoint(0.5,0.5));
 	    mBgLayer1.setParallax(new FlxPoint(0.25,0.25));
 
@@ -63,6 +60,8 @@ package com.jjin
 		    mStartLocation_enemy.y, mPlayer));
 	    mEnemies.add(new Enemy(200,40,mPlayer));
 
+	    mPlayerBullets = mPlayer.getBullets();
+
 	    // CAMERA SETUP
 	    FlxG.camera.setBounds(0,0,mMap.width,mMap.height);
 	    FlxG.worldBounds = new FlxRect(0,0,mMap.width,mMap.height);
@@ -72,19 +71,25 @@ package com.jjin
 	    add(mPlayer);
 	    add(mEnemies);
 	    add(mPlayer.getGibs());
-	    add(mBullets);
+	    add(mPlayerBullets);
 	}
 
 	override public function update():void
 	{
 	    super.update();
 	    FlxG.collide(mCollideables, mPlayer);
-	    FlxG.collide(mCollideables, mEnemy);
+	    FlxG.collide(mCollideables, mEnemies);
 	    FlxG.overlap(mPlayer, mEnemies, overlapped);
+	    FlxG.overlap(mPlayerBullets, mEnemies, hitEnemy);
 	}
 
 	protected function overlapped(sprite1:FlxSprite, sprite2:FlxSprite):void {
 	    sprite1.kill();
+	}
+
+	protected function hitEnemy(Bullet:FlxObject, Monster:FlxObject):void {
+	    Bullet.kill();
+	    Monster.hurt(1);
 	}
     }
 }
