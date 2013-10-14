@@ -10,6 +10,7 @@ package
     {
 	public function FlixelPracticePlatformer()
 	{
+	    FlxG.visualDebug = true; 	// comment for production
 	    super(320,240,PlayState,2);
 	}
     }

@@ -2,18 +2,27 @@ package com.jjin
 {
     import org.flixel.FlxSprite;
     import org.flixel.FlxObject;
+    import org.flixel.FlxG;
 
     public class Bullet extends FlxSprite
     {
-	[Embed(source="../../../asset/sprite/helmetguy_bullet.png")]private var iBullet:Class;
+	private var mBulletSpeed:int; // TODO: not in use, make it set by Player
 
-	public function Bullet():void {
+	public function getBulletSpeed():int {
+	    return mBulletSpeed;
+xb	}
+
+	public function Bullet(bulletImage:Class, bulletSpeed:int):void {
 	    super();
-	    loadGraphic(iBullet, false);
+	    loadGraphic(bulletImage, false);
 	    exists = false;
+	    mBulletSpeed = bulletSpeed;
 	}
 
 	override public function update():void {
+	    if (getScreenXY().x < -64 || getScreenXY().x > FlxG.width+64)
+	    kill();
+
 	    if (!alive && finished) exists = false;
 	    else super.update();
 	}

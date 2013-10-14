@@ -15,6 +15,8 @@ package com.jjin
 	{
 	    super(X,Y);
 
+	    health = 3;
+
 	    mMovingAnimation = new Array(0,1);
 	    mIdleAnimation = new Array(0);
 
@@ -60,6 +62,16 @@ package com.jjin
 	    else play("walking");
 
 	    super.update();
+	}
+
+	override public function hurt(Damage:Number):void {
+	    // knockback
+	    if (facing == RIGHT) velocity.x = drag.x * 4;
+	    else if (facing == LEFT) velocity.x = -drag.x * 4;
+	    // TODO: move mKnockbackSpeed to Character class
+
+	    flicker(0.5);
+	    super.hurt(Damage);
 	}
     }
 }
